@@ -34,7 +34,7 @@ export default class HomePage extends Component {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} align="center">
-          <Typography variant="h3" compact="h3">
+          <Typography variant="h3" component="h3">
             House Party
           </Typography>
         </Grid>
@@ -78,7 +78,7 @@ export default class HomePage extends Component {
           <Route 
           path="/room/:roomCode" 
           render={(props)=>{
-            return <Room{...props} leaveRoomCallback={this.clearRoomCode}></Room>
+            return <Room {...props} leaveRoomCallback={this.clearRoomCode}></Room>
           }} />
         </Switch>
       </Router>
