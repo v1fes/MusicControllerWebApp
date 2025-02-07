@@ -158,8 +158,8 @@ export default class CreateRoomPage extends Component {
         </Grid>
         <Grid item xs={12} align="center">
           <FormControl component="fieldset">
-            <FormHelperText>
-              <div align="center">Guest Control of Playback State</div>
+            <FormHelperText align="center">
+              <div>Guest Control of Playback State</div>
             </FormHelperText>
             <RadioGroup
               row
@@ -193,8 +193,8 @@ export default class CreateRoomPage extends Component {
                 style: { textAlign: "center" },
               }}
             />
-            <FormHelperText>
-              <div align="center">Votes Required To Skip Song</div>
+            <FormHelperText align="center">
+              <div>Votes Required To Skip Song</div>
             </FormHelperText>
           </FormControl>
         </Grid>
