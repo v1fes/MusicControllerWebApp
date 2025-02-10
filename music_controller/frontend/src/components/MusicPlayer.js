@@ -44,7 +44,7 @@ export default class MusicPlayer extends Component {
 
     return (
       <Card>
-        <Grid container alignItems="center">
+        <Grid container alignItems="center" justifyContent="center">
           <Grid item align="center" xs={4}>
             <img src={this.props.image_url} height="100%" width="100%" />
           </Grid>

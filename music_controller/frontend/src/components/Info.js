@@ -13,11 +13,11 @@ export default function Info(props) {
   const [page, setPage] = useState(pages.JOIN);
 
   function joinInfo() {
-    return "Join page";
+    return "The 'Join a Room' page allows users to enter a room code to join an existing room where they can listen to music together.";
   }
 
   function createInfo() {
-    return "Create page";
+    return "The 'Create a Room' page lets users set up a new room where they can control playback and invite others to join.";
   }
 
   useEffect(() => {
