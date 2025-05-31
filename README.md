@@ -39,4 +39,6 @@ npm run server
 
 ## Автор
 Фесенко Вікторія ВТ-22-1
+## Cookie popup
+![image](https://github.com/user-attachments/assets/480ce235-7db3-4c67-9439-8221a33a93f2)
 
