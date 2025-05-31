@@ -35,7 +35,10 @@ npm run server
 
 Детальніше — у файлі [MIT License](https://github.com/v1fes/MusicControllerWebApp/blob/main/LICENSE)
 
+[licenses-report](https://github.com/v1fes/MusicControllerWebApp/blob/main/music_controller/licenses-report.txt)
 
 ## Автор
 Фесенко Вікторія ВТ-22-1
+## Cookie popup
+![image](https://github.com/user-attachments/assets/480ce235-7db3-4c67-9439-8221a33a93f2)
 
