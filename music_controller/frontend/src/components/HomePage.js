@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CookieConsent from "react-cookie-consent";
 import RoomJoinPage from "./RoomJoinPage";
 import CreateRoomPage from "./CreateRoomPage";
 import Room from "./Room";
@@ -65,6 +66,48 @@ export default class HomePage extends Component {
   render() {
     return (
       <Router>
+        <CookieConsent
+        location="bottom"
+        buttonText="Прийняти"
+        declineButtonText="Відхилити"
+        enableDeclineButton
+        cookieName="musiccontroller_gdpr"
+        style={{
+          background: "linear-gradient(90deg, #48c6ef 0%, #6f86d6 100%)",
+          color: "#222",
+          fontSize: "18px",
+          borderRadius: "16px",
+          maxWidth: "560px",
+          margin: "0 auto 32px auto",
+          left: 0,
+          right: 0,
+          position: "fixed",
+          boxShadow: "0 0 24px 0 rgba(60,60,120,0.18)",
+          textAlign: "center",
+          zIndex: 9999
+        }}
+        buttonStyle={{
+          background: "#373B44",
+          color: "#fff",
+          fontWeight: "bold",
+          borderRadius: "10px",
+          fontSize: "16px",
+          padding: "8px 24px",
+          marginRight: "16px",
+          border: "none"
+        }}
+        declineButtonStyle={{
+          background: "#d32f2f",
+          color: "#fff",
+          borderRadius: "10px",
+          fontSize: "16px",
+          padding: "8px 24px",
+          border: "none"
+        }}
+      >
+        🍪 Ми використовуємо cookies для найкращого досвіду на сайті.
+        <a href="/privacy-policy" style={{ color: "#fff", textDecoration: "underline", marginLeft: 10 }}>Детальніше</a>
+      </CookieConsent>
         <Switch>
           <Route
             exact
