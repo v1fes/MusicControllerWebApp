@@ -12,6 +12,22 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Collapse } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
+/**
+ * Компонент для створення або оновлення кімнати.
+ * Дозволяє вказати кількість голосів для пропуску та налаштувати контроль паузи для гостей.
+ * Виводить повідомлення про успіх або помилку.
+ *
+ * @component
+ * @param {object} props
+ * @param {number} [props.votesToSkip=2] - Голосів для пропуску
+ * @param {boolean} [props.guestCanPause=true] - Чи може гість ставити на паузу
+ * @param {boolean} [props.update=false] - Режим оновлення чи створення кімнати
+ * @param {string|null} [props.roomCode=null] - Код кімнати для оновлення
+ * @param {function} [props.updateCallback] - Колбек після оновлення
+ * @example
+ * <CreateRoomPage votesToSkip={3} guestCanPause={false} />
+ */
+
 export default class CreateRoomPage extends Component {
   static defaultProps = {
     votesToSkip: 2,
@@ -35,12 +51,22 @@ export default class CreateRoomPage extends Component {
     this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
     this.handleUpdateButtonPressed = this.handleUpdateButtonPressed.bind(this);
   }
+  
+/**
+ * Обробник зміни кількості голосів для пропуску.
+ * @param {object} e - Подія input
+ */
 
   handleVotesChange(e) {
     this.setState({
       votesToSkip: e.target.value,
     });
   }
+
+  /**
+ * Обробник зміни дозволу паузи для гостей.
+ * @param {object} e - Подія input
+ */
 
   handleGuestCanPauseChange(e) {
     this.setState({

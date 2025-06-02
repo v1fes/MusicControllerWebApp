@@ -13,12 +13,28 @@ import {
 } from "react-router-dom";
 import Info from "./Info";
 
+/**
+ * Головна сторінка додатку House Party.
+ *
+ * Відображає основну навігацію, кнопку входу в кімнату, інформацію та створення кімнати.
+ * Додає банер CookieConsent для повідомлення про cookies згідно з GDPR.
+ *
+ * @component
+ * @example
+ * return (
+ *   <HomePage />
+ * )
+ */
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       roomCode: null,
     };
+  /**
+   * Очищає код кімнати у state.
+   */
     this.clearRoomCode = this.clearRoomCode.bind(this);
   }
 
@@ -32,6 +48,11 @@ export default class HomePage extends Component {
       });
   }
 
+  /**
+   * Повертає головну сторінку з навігацією.
+   *
+   * @returns {React.ReactNode}
+   */
   renderHomePage() {
     return (
       <Grid container spacing={3}>

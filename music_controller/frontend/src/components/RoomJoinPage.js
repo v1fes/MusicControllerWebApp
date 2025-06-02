@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import { TextField, Button, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+/**
+ * Сторінка для підключення до кімнати по коду.
+ * Користувач може ввести код кімнати та перейти до неї, якщо код існує.
+ *
+ * @component
+ * @example
+ * return (
+ *   <RoomJoinPage />
+ * )
+ */
+
 export default class RoomJoinPage extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +61,11 @@ export default class RoomJoinPage extends Component {
     );
   }
 
+  /**
+   * Оновлює стан поля вводу та очищує помилку.
+   * @param {object} e - Подія зміни інпута
+   */
+
   handleTextFieldChange(e) {
     this.setState({
       roomCode: e.target.value,
@@ -57,6 +73,11 @@ export default class RoomJoinPage extends Component {
     });
   }
 
+  /**
+   * Надсилає запит на підключення до кімнати.
+   * Якщо код валідний — переводить користувача у кімнату, інакше показує помилку.
+   */
+  
   roomButtonPressed() {
     const requestOptions = {
       method: "POST",

@@ -10,11 +10,41 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 
+
+/**
+ * Музичний плеєр, який показує інформацію про поточну пісню та дозволяє керувати відтворенням.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} props.title - Назва пісні
+ * @param {string} props.artist - Ім'я виконавця
+ * @param {string} props.image_url - Посилання на обкладинку
+ * @param {boolean} props.is_playing - Статус: грає чи пауза
+ * @param {number} props.time - Поточний час відтворення (сек.)
+ * @param {number} props.duration - Тривалість пісні (сек.)
+ * @param {number} props.votes - Кількість голосів за пропуск
+ * @param {number} props.votes_required - Необхідно голосів для пропуску
+ * @example
+ * <MusicPlayer
+ *   title="Song"
+ *   artist="Artist"
+ *   image_url="cover.jpg"
+ *   is_playing={true}
+ *   time={60}
+ *   duration={180}
+ *   votes={2}
+ *   votes_required={5}
+ * />
+ */
+
+
 export default class MusicPlayer extends Component {
   constructor(props) {
     super(props);
   }
-
+  /**
+   * Відправляє запит для пропуску поточної пісні.
+   */
   skipSong() {
     const requestOptions = {
       method: "POST",
@@ -22,6 +52,9 @@ export default class MusicPlayer extends Component {
     };
     fetch("/spotify/skip", requestOptions);
   }
+  /**
+   * Відправляє запит для паузи відтворення.
+   */
   pauseSong() {
     const requestOptions = {
       method: "PUT",
@@ -29,6 +62,9 @@ export default class MusicPlayer extends Component {
     };
     fetch("/spotify/pause", requestOptions);
   }
+   /**
+   * Відправляє запит для відновлення відтворення.
+   */
 
   playSong() {
     const requestOptions = {

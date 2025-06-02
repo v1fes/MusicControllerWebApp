@@ -3,6 +3,21 @@ import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
 
+/**
+ * Компонент кімнати для музичної вечірки.
+ *
+ * Дозволяє користувачам управляти кімнатою, переглядати та змінювати налаштування, 
+ * підключатися до Spotify, програвати музику, а також залишати кімнату.
+ *
+ * @component
+ * @param {object} props
+ * @param {object} props.match - Дані роутингу з roomCode
+ * @param {function} props.leaveRoomCallback - Callback для виходу з кімнати
+ * @param {object} props.history - Об'єкт history для навігації
+ * @example
+ * return <Room match={match} leaveRoomCallback={fn} history={history} />
+ */
+
 export default class Room extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +47,10 @@ export default class Room extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
+  /**
+   * Оновлює дані про кімнату (votesToSkip, guestCanPause, isHost).
+   * Якщо користувач — хост, викликає авторизацію Spotify.
+   */
   getRoomDetails() {
     return fetch("/api/get-room" + "?code=" + this.roomCode)
       .then((response) => {
@@ -53,7 +71,9 @@ export default class Room extends Component {
         }
       });
   }
-
+  /**
+   * Виконує авторизацію користувача у Spotify для керування музикою.
+   */
   authenticateSpotify() {
     fetch("/spotify/is-authenticated")
       .then((response) => response.json())
@@ -69,7 +89,9 @@ export default class Room extends Component {
         }
       });
   }
-
+  /**
+   * Отримує поточну пісню з Spotify і оновлює стан компонента.
+   */
   getCurrentSong() {
     fetch("/spotify/current-song")
       .then((response) => {
@@ -84,7 +106,10 @@ export default class Room extends Component {
         console.log(data);
       });
   }
-
+  /**
+   * Обробляє натискання кнопки виходу з кімнати.
+   * Викликає leaveRoomCallback і переводить користувача на головну.
+   */
   leaveButtonPressed() {
     const requestOptions = {
       method: "POST",
@@ -95,13 +120,19 @@ export default class Room extends Component {
       this.props.history.push("/");
     });
   }
-
+  /**
+   * Оновлює стан показу налаштувань кімнати.
+   * @param {boolean} value - Чи показувати налаштування
+   */ 
   updateShowSettings(value) {
     this.setState({
       showSettings: value,
     });
   }
-
+  /**
+   * Рендерить форму для оновлення налаштувань кімнати (CreateRoomPage).
+   * @returns {React.ReactNode}
+   */
   renderSettings() {
     return (
       <Grid container spacing={1}>
@@ -126,7 +157,10 @@ export default class Room extends Component {
       </Grid>
     );
   }
-
+  /**
+   * Рендерить кнопку "Settings" для хоста кімнати.
+   * @returns {React.ReactNode}
+   */
   renderSettingsButton() {
     return (
       <Grid item xs={12} align="center">

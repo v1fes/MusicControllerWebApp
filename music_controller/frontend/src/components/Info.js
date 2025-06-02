@@ -9,13 +9,31 @@ const pages = {
   CREATE: "pages.create",
 };
 
+/**
+ * Інформаційна сторінка про функціонал House Party.
+ * Відображає опис для сторінок "Join a Room" та "Create a Room", дозволяє перемикатись між ними.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Info />
+ * )
+ */
 export default function Info(props) {
   const [page, setPage] = useState(pages.JOIN);
 
+  /**
+ * Повертає опис сторінки підключення до кімнати.
+ * @returns {string}
+ */
   function joinInfo() {
     return "The 'Join a Room' page allows users to enter a room code to join an existing room where they can listen to music together.";
   }
 
+/**
+ * Повертає опис сторінки створення кімнати.
+ * @returns {string}
+ */
   function createInfo() {
     return "The 'Create a Room' page lets users set up a new room where they can control playback and invite others to join.";
   }
