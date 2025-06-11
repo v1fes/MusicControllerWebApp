@@ -5,7 +5,8 @@ from .models import Room
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
-
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 
@@ -34,6 +35,16 @@ class GetRoom(APIView):
 class JoinRoom(APIView):
     lookup_url_kwarg = 'code'
 
+    @swagger_auto_schema(
+        operation_summary="Join an existing room",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            required=['code'],
+            properties={'code': openapi.Schema(type=openapi.TYPE_STRING)}
+        ),
+        responses={200: openapi.Response('Room joined')}
+    )
+
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
@@ -54,6 +65,12 @@ class JoinRoom(APIView):
 class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
+    @swagger_auto_schema(
+        operation_summary="Create a new room",
+        request_body=CreateRoomSerializer,
+        responses={201: RoomSerializer}
+    )
+    
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
