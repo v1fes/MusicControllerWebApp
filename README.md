@@ -13,9 +13,11 @@
 
 Backend
 ```puthon
-pip install django djangorestframework 
+pip install django djangorestframework
+pip install markdown
 python manage.py runserver
 ```
+
 Frontend
 ```react
 cd frontend
